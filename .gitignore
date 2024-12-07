@@ -65,4 +65,62 @@ buildNumber.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/vaadin,java,kotlin,maven
 
-Объяснить
+# Maven/Gradle
+.mvn/
+!**/mvnw*
+**/target/
+.gradle/
+build/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse
+.settings/
+*.launch
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+
+# Vaadin
+/.vaadin/
+**/node_modules/
+**/pnpm-lock.yaml
+**/package-lock.json
+**/yarn.lock
+**/webpack.generated.js
+**/flow-frontend/
+**/generated/
+
+# Spring Boot
+**/application-*.properties
+**/application-*.yaml
+**/application-*.yml
+**/application-*.json
+
+# Test reports
+**/test-results/
+**/test-output/
+**/surefire-reports/
+**/jacoco/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*~
+*.bak
+*.old
+
+# Security
+*.key
+*.pem
+*.crt
