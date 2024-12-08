@@ -1,5 +1,11 @@
 # Project Base for Vaadin and Spring Boot
 
+How to build with Docker
+```bash
+docker build . -t barman:latest
+docker run -p 8080:8080 barman:latest
+```
+
 This project can be used as a starting point to create your own Vaadin application with Spring Boot.
 It contains all the necessary configuration and some placeholder files to get you started.
 

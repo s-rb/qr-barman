@@ -42,7 +42,7 @@ class CodeGeneratorService {
             // Читаем содержимое файла и возвращаем в виде потока
             ByteArrayInputStream(Files.readAllBytes(tempFile))
         } catch (e: WriterException) {
-            throw RuntimeException("Ошибка при создании QR-кода: ${e.message}")
+            throw RuntimeException("Error happened when tried create QR code: ${e.message}")
         }
     }
 }
