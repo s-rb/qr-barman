@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  service:
+    container_name: qr-barman
+    build: .
+    restart: always
+    ports:
+      - 8085:8080
+    volumes:
+      - .m2:/root/.m2
