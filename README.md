@@ -1,6 +1,6 @@
 # QR code generator project
 
-Based on Vaadin, Springboot web application
+Based on Vaadin, SpringBoot web application
 
 Zxing as qr code encoder
 

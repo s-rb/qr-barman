@@ -30,7 +30,10 @@ private const val MIN_CONTENT = "min-content"
 @UIScope
 @PageTitle("Qr Generator")
 @Menu(order = 0.0)
-class QrGenViewView @Autowired constructor(val codeGeneratorService: CodeGeneratorService) : Composite<VerticalLayout?>() {
+class QrGenViewView @Autowired constructor(
+    val codeGeneratorService: CodeGeneratorService
+) : Composite<VerticalLayout?>() {
+
     init {
         val headerLayoutRow = HorizontalLayout()
         val avatar = Avatar()
@@ -79,7 +82,7 @@ class QrGenViewView @Autowired constructor(val codeGeneratorService: CodeGenerat
     }
 
     private fun showErrorNotification(message: String) {
-        val notification = Notification(message, 3000) // Время отображения: 3000 мс
+        val notification = Notification(message, 5000, Notification.Position.TOP_END) // Время отображения: 5000 мс
         notification.addThemeVariants(NotificationVariant.LUMO_ERROR) // Стилизуем как ошибку
         notification.open()
     }
