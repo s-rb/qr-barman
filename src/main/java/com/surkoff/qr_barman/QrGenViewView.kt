@@ -36,8 +36,8 @@ class QrGenViewView @Autowired constructor(
 
     init {
         val headerLayoutRow = HorizontalLayout()
+        val headerLayoutCol = VerticalLayout()
         val avatar = Avatar()
-        val link = Anchor()
         val layoutColumn = VerticalLayout()
         val h1 = H1()
         val qrTextField = TextField()
@@ -47,11 +47,11 @@ class QrGenViewView @Autowired constructor(
         content?.width = WIDTH_100_PERCENT
         content?.style?.set("flex-grow", "1")
 
+        headerLayoutRow.add(headerLayoutCol)
         h1.apply { tuneH1(layoutColumn, this) }
-        avatar.apply { tuneAvatar(this, headerLayoutRow) }
-        link.apply { tuneLink(headerLayoutRow, this) }
+        avatar.apply { tuneAvatar(this, headerLayoutCol) }
         qrTextField.apply { tuneTextField(this, layoutColumn) }
-        headerLayoutRow.apply { tuneLayoutRow(this, WIDTH_100_PERCENT, MIN_CONTENT, Alignment.CENTER, JustifyContentMode.START) }
+        headerLayoutRow.apply { tuneLayoutRow(this, WIDTH_100_PERCENT, MIN_CONTENT, Alignment.CENTER, JustifyContentMode.CENTER) }
         qrGenLayoutRow.apply { tuneLayoutRow(this, WIDTH_100_PERCENT, MIN_CONTENT) }
         layoutColumn.apply { tuneLayoutColumn2(this) }
         generateButton.apply { tuneGenerateButton(this, layoutColumn) }
@@ -110,27 +110,34 @@ class QrGenViewView @Autowired constructor(
         layoutColumn2.add(h1)
     }
 
-    private fun tuneAvatar(avatar: Avatar, layoutRow: HorizontalLayout) {
+    private fun tuneAvatar(avatar: Avatar, layoutRow: VerticalLayout) {
         avatar.name = "Roman Surkoff"
-        avatar.image = "./icons/logo.png"
-        layoutRow.setAlignSelf(Alignment.CENTER, avatar)
-        layoutRow.add(avatar)
-    }
-
-    private fun tuneLink(layoutRow: HorizontalLayout, link: Anchor) {
+        avatar.image = "./icons/logo-big.png"
+        avatar.maxHeight = "5em"
+        avatar.maxWidth = "5em"
+        avatar.height = "100%"
+        avatar.width = "100%"
+        // Создаем Anchor и оборачиваем в него аватар
+        val link = Anchor("https://surkoff.com", avatar)
+        link.setTarget("_blank") // Открывает ссылку в новой вкладке
         layoutRow.setAlignSelf(Alignment.CENTER, link)
-        link.text = "surkoff.com"
-        link.setHref("https://surkoff.com")
         layoutRow.add(link)
-        link.width = MIN_CONTENT
     }
 
     private fun tuneTextField(fld: TextField, layoutColumn: VerticalLayout) {
-        fld.label = "Enter text for QR code"
-        layoutColumn.setAlignSelf(Alignment.CENTER, fld)
+        fld.label = ""
+        fld.placeholder= "Enter text for QR Code"
+        // Создаем HorizontalLayout для центрирования
+        val horizontalLayout = HorizontalLayout()
+        horizontalLayout.justifyContentMode = JustifyContentMode.CENTER
+        horizontalLayout.alignItems = Alignment.CENTER
+        // Добавляем метку и поле ввода в HorizontalLayout
+        horizontalLayout.add(fld)
+        // Центрируем HorizontalLayout в VerticalLayout
+        layoutColumn.setAlignSelf(Alignment.CENTER, horizontalLayout)
+        layoutColumn.add(horizontalLayout)
         fld.width = MIN_CONTENT
-        fld.maxWidth = "300px"
-        layoutColumn.add(fld)
+        fld.maxWidth = "350px"
     }
 
     private fun tuneGenerateButton(btn: Button, layoutColumn: VerticalLayout) {
