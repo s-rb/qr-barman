@@ -14,3 +14,18 @@ or use docker-compose
 ```bash
 docker-compose up -d
 ```
+
+### TODO:
+Implement these types of input:
+- text
+- URL
+- contact
+- event
+- phone call
+- SMS
+- e-mail
+- Wi-Fi
+<!--
+example here:
+https://dev.to/techelopment/qr-code-with-python-in-7-lines-of-code-160m
+-->
