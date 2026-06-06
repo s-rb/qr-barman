@@ -9,3 +9,8 @@ services:
       - 8085:8080
     volumes:
       - .m2:/root/.m2
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"  # Ротация при достижении 10 МБ
+        max-file: "5"    # Максимум 5 архивных файлов (общий лимит ~50 МБ)
