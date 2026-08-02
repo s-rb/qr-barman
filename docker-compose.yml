@@ -14,3 +14,9 @@ services:
       options:
         max-size: "10m"  # Ротация при достижении 10 МБ
         max-file: "5"    # Максимум 5 архивных файлов (общий лимит ~50 МБ)
+    networks:
+      - qr-barman_default
+
+networks:
+  qr-barman_default:
+    external: true
